@@ -8,5 +8,12 @@ resource "aws_instance" "ikw-1" {
   tags = {
     Name = "EC2_Instance_Terraform"
   }
+  
+  provisioner "remote-exec" {
+    scripts = [
+      "scripts/install-vault.sh",
+      "scripts/run-dev-server.sh"
+    ]
+  }
 }
 
